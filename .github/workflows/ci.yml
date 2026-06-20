@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    name: Syntax & provider check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Check all providers load without errors
+        run: |
+          node --input-type=module <<'EOF'
+          const names = ['greenhouse','ashby','lever','workable','smartrecruiters','recruitee','cutshort','internshala'];
+          for (const name of names) {
+            const m = await import(`./providers/${name}.mjs`);
+            if (typeof m.default?.detect !== 'function') throw new Error(`${name}: missing detect()`);
+            if (typeof m.default?.fetch !== 'function') throw new Error(`${name}: missing fetch()`);
+            console.log(`✓ ${name}`);
+          }
+          EOF
+
+      - name: Check scan.mjs and sync.mjs syntax
+        run: node --check scan.mjs sync.mjs push.mjs

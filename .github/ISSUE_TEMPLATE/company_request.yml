@@ -1,0 +1,46 @@
+name: Company Request
+description: Request a company to be added to portals.example.yml
+labels: ["company-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Know which ATS a company uses? Fill this out and we'll add it.
+        Even better — open a PR yourself! It's a one-liner in `config/portals.example.yml`.
+
+  - type: input
+    id: company-name
+    attributes:
+      label: Company name
+      placeholder: e.g. Meesho
+    validations:
+      required: true
+
+  - type: input
+    id: careers-url
+    attributes:
+      label: Careers page URL
+      placeholder: https://company.com/careers
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ats
+    attributes:
+      label: Which ATS does this company use? (check their careers URL)
+      options:
+        - Greenhouse (boards.greenhouse.io/slug)
+        - Lever (jobs.lever.co/slug)
+        - Ashby (jobs.ashbyhq.com/slug)
+        - SmartRecruiters (careers.smartrecruiters.com/slug)
+        - Workable (apply.workable.com/slug)
+        - Recruitee (slug.recruitee.com)
+        - Unknown
+    validations:
+      required: true
+
+  - type: input
+    id: ats-slug
+    attributes:
+      label: ATS slug (the part after the domain)
+      placeholder: e.g. for boards.greenhouse.io/razorpay → razorpay

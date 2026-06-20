@@ -1,58 +1,164 @@
 # NaukriClear CLI
 
-India-first AI job search pipeline — built for NaukriClear users.
+**India-first job scanner for developers.** Hits ATS APIs directly — zero tokens, zero AI cost — and syncs results to your [NaukriClear](https://naukriclear.com) dashboard automatically.
 
-Scans Indian job portals (Greenhouse, Ashby, Lever + more coming), scores jobs against your profile, and syncs everything to your NaukriClear dashboard automatically.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+---
+
+## What it does
+
+1. **Scans** 38+ Indian companies across 6 ATS platforms in parallel
+2. **Filters** by role, city, and keywords — no noise
+3. **Syncs** new jobs to NaukriClear → Discover → Terminal Jobs
+4. **Deduplicates** — never shows you the same job twice
+
+No scraping. No AI tokens spent on scanning. Pure HTTP against public ATS APIs.
+
+---
+
+## Supported ATS Providers
+
+| Provider | Companies covered | Detection |
+|---|---|---|
+| **Greenhouse** | Razorpay, Groww, Postman, BrowserStack, Freshworks, Zepto, Meesho, Blinkit, Khatabook, Zenoti, InMobi, Amagi, DailyHunt, Bluestone | `greenhouse_id` in portals.yml |
+| **Ashby** | CRED, Setu, Decentro | `ashby_id` |
+| **Lever** | PhonePe, Zeta, Mindtickle, Pocket FM, Porter, Clear, Flipkart | `lever_id` |
+| **SmartRecruiters** | Swiggy, Zomato, Dream11, ShareChat, OYO, Nykaa, Delhivery, Urban Company, Cars24, BlackBuck, PharmEasy, Shiprocket, Pristyn Care, Ola Electric | `smartrecruiters_id` |
+| **Workable** | Any company on `apply.workable.com` | `workable_id` or careers URL |
+| **Recruitee** | Any company on `*.recruitee.com` | `recruitee_id` or careers URL |
+| **Cutshort** | Global sweep across Indian tech companies | built-in |
+| **Internshala** | Entry-level / fresher roles | built-in |
+
+> Missing your target company? [Request it](../../issues/new?template=company_request.yml) or add it yourself in `config/portals.yml` and open a PR.
+
+---
 
 ## Quick Start
 
 ```bash
-# 1. Install dependencies
+# 1. Clone and install
+git clone https://github.com/YOUR_ORG/naukriclear-cli.git
+cd naukriclear-cli
 npm install
 
 # 2. Set up your profile
 cp config/profile.example.yml config/profile.yml
 cp config/portals.example.yml config/portals.yml
-# Edit both files with your details
+# Edit config/profile.yml — add your name, target roles, cities, NaukriClear API key
+```
 
-# 3. Open Claude Code here
-claude
+### With Claude Code (recommended)
 
-# 4. Inside Claude Code, run
-/nc setup     # first time setup wizard
-/nc scan      # scan all portals (zero tokens)
+```bash
+claude        # open Claude Code in this directory
+/nc scan      # scan all portals — zero AI tokens
 /nc sync      # push to NaukriClear dashboard
 ```
 
-## Commands
+### Without Claude Code
 
-| Command | Description |
+```bash
+node scan.mjs   # scan + auto-sync (if autoSync: true in profile.yml)
+node sync.mjs   # push pipeline manually
+```
+
+---
+
+## Configuration
+
+### `config/profile.yml`
+
+```yaml
+candidate:
+  name: "Your Name"
+  email: "you@example.com"
+
+target_roles:
+  primary:
+    - "Software Engineer"
+    - "Backend Engineer"
+    - "SDE"
+  cities:
+    - Bengaluru
+    - Hyderabad
+    - Remote
+  exclude_keywords:
+    - intern
+    - manager
+
+integrations:
+  naukriClear:
+    apiKey: "nc_your_token_here"   # NaukriClear → Settings → API Token
+    autoSync: true
+```
+
+### Adding companies to `config/portals.yml`
+
+```yaml
+companies:
+  - name: YourTargetCompany
+    greenhouse_id: yourcompany        # boards.greenhouse.io/yourcompany
+
+  - name: AnotherCompany
+    lever_id: anothercompany          # jobs.lever.co/anothercompany
+
+  - name: SmartRecruitersCompany
+    smartrecruiters_id: CompanySlug   # careers.smartrecruiters.com/CompanySlug
+```
+
+---
+
+## Commands (Claude Code)
+
+| Command | What it does |
 |---|---|
-| `/nc` | Show help + stats |
-| `/nc scan` | Zero-token scan of all portals |
-| `/nc {url or JD}` | Evaluate a job (6-block India scoring) |
-| `/nc sync` | Push pipeline to NaukriClear |
+| `/nc scan` | Scan all portals — zero tokens |
+| `/nc sync` | Push pipeline → NaukriClear dashboard |
+| `/nc push` | Scan + sync in one step |
+| `/nc {url or JD text}` | Evaluate a job: CV match, CTC, company health, interview plan |
 | `/nc tracker` | Application pipeline summary |
 
-## Where results appear
+---
 
-**NaukriClear → Discover → Terminal Jobs**
+## Project Structure
 
-All scanned jobs appear there. Browse, filter by company/role, click to view JD, mark as Applied or Skip.
+```
+providers/              # One file per ATS platform
+  greenhouse.mjs
+  ashby.mjs
+  lever.mjs
+  workable.mjs
+  smartrecruiters.mjs
+  recruitee.mjs
+  cutshort.mjs
+  internshala.mjs
 
-## Providers (Phase 1)
+config/
+  profile.example.yml   # Copy to profile.yml and fill in your details
+  portals.example.yml   # Copy to portals.yml — add/remove companies
 
-- Greenhouse ✅
-- Ashby ✅  
-- Lever ✅
-- Naukri.com 🔜
-- Instahyre 🔜
-- Cutshort 🔜
-- Wellfound India 🔜
-- LinkedIn India 🔜
+scan.mjs                # Main scanner — runs all providers concurrently
+sync.mjs                # Pushes pipeline.md to NaukriClear API
+push.mjs                # scan + sync in one command
+```
 
-## Requirements
+---
 
-- Node.js 18+
-- Claude Code CLI (`npm install -g @anthropic-ai/claude-code`)
-- NaukriClear account (get your API token from Settings)
+## Contributing
+
+Contributions are very welcome — especially new ATS providers and more Indian companies. See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.
+
+**Quick ways to contribute:**
+- 🏢 [Request a company to be added](../../issues/new?template=company_request.yml)
+- 🔌 [Request a new ATS provider](../../issues/new?template=provider_request.yml)
+- 🐛 [Report a bug](../../issues/new?template=bug_report.yml)
+- ✨ Open a PR — all skill levels welcome
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).

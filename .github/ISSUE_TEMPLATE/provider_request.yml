@@ -1,0 +1,37 @@
+name: ATS Provider Request
+description: Request support for a new ATS platform (Darwinbox, Keka, iCIMS, etc.)
+labels: ["provider-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Many Indian companies use Darwinbox, Keka, Taleo, or iCIMS — none supported yet.
+        If you know the API, consider opening a PR! See [CONTRIBUTING.md](../../blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: ats-name
+    attributes:
+      label: ATS platform name
+      placeholder: e.g. Darwinbox, Keka, iCIMS, Taleo
+    validations:
+      required: true
+
+  - type: input
+    id: example-companies
+    attributes:
+      label: Indian companies using this ATS
+      placeholder: e.g. Infosys, Wipro, HCL
+    validations:
+      required: true
+
+  - type: input
+    id: api-docs
+    attributes:
+      label: Public API or careers page URL (if known)
+      placeholder: https://...
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Any other notes
+      placeholder: Authentication required? Rate limits? Known gotchas?
