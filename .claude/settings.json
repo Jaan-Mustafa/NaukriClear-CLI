@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node sync.mjs 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

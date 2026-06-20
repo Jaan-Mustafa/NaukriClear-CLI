@@ -1,0 +1,35 @@
+{
+  "name": "@naukriclear/cli",
+  "version": "0.1.0",
+  "description": "India-first AI job search CLI — built for NaukriClear users",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "naukriclear-cli": "./bin/init.mjs"
+  },
+  "scripts": {
+    "push": "node push.mjs",
+    "scan": "node scan.mjs",
+    "sync": "node sync.mjs",
+    "tracker": "node tracker.mjs",
+    "doctor": "node doctor.mjs"
+  },
+  "keywords": [
+    "job-search",
+    "india",
+    "naukriclear",
+    "cli",
+    "ai"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "js-yaml": "^4.1.0"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.40.0"
+  }
+}

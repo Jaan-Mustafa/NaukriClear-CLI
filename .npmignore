@@ -1,0 +1,7 @@
+data/
+.naukriclear-cursor
+config/profile.yml
+config/portals.yml
+cv.md
+node_modules/
+*.log

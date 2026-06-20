@@ -1,0 +1,160 @@
+# NaukriClear CLI — Portals Configuration
+# Companies to scan for Md Rizabul — SDE-1 / Backend / Full Stack
+
+companies:
+  # ── Fintech & Payments ───────────────────────────────────────────────────
+  - name: Razorpay
+    careers_url: https://razorpay.com/jobs/
+    greenhouse_id: razorpay
+
+  - name: PhonePe
+    careers_url: https://phonepe.com/en-in/careers.html
+    lever_id: phonepe
+
+  - name: Groww
+    careers_url: https://groww.in/open-positions
+    greenhouse_id: groww
+
+  - name: CRED
+    careers_url: https://careers.cred.club
+    ashby_id: cred
+
+  - name: Setu
+    careers_url: https://setu.co/careers
+    ashby_id: setu
+
+  - name: Decentro
+    careers_url: https://decentro.tech/careers
+    ashby_id: decentro
+
+  # ── Product / SaaS ───────────────────────────────────────────────────────
+  - name: Postman
+    careers_url: https://www.postman.com/company/careers/
+    greenhouse_id: postman
+
+  - name: BrowserStack
+    careers_url: https://www.browserstack.com/careers
+    greenhouse_id: browserstack
+
+  - name: Freshworks
+    careers_url: https://careers.freshworks.com
+    greenhouse_id: freshworks
+
+  - name: Zepto
+    careers_url: https://www.zeptonow.com/careers
+    greenhouse_id: zepto
+
+  - name: Meesho
+    careers_url: https://meesho.io/jobs
+    greenhouse_id: meesho
+
+  - name: Blinkit
+    careers_url: https://blinkit.com/careers
+    greenhouse_id: blinkit
+
+  - name: Khatabook
+    careers_url: https://khatabook.com/careers
+    greenhouse_id: khatabook
+
+  # ── Fintech / Payments (continued) ─────────────────────────────────────
+  - name: Zeta
+    lever_id: zeta
+
+  # ── SaaS / Enterprise ────────────────────────────────────────────────────
+  - name: Zenoti
+    greenhouse_id: zenoti
+
+  - name: Mindtickle
+    lever_id: mindtickle
+
+  - name: InMobi
+    greenhouse_id: inmobi
+
+  - name: Amagi
+    greenhouse_id: amagi
+
+  # ── Media & Consumer ──────────────────────────────────────────────────────
+  - name: DailyHunt
+    greenhouse_id: verse
+
+  - name: Pocket FM
+    lever_id: pocketfm
+
+  - name: Bluestone
+    greenhouse_id: bluestone
+
+  # ── Logistics ─────────────────────────────────────────────────────────────
+  - name: Porter
+    lever_id: porter
+
+  # ── SmartRecruiters — 14 confirmed Indian unicorns ───────────────────────
+  - name: Swiggy
+    careers_url: https://careers.smartrecruiters.com/Swiggy
+    smartrecruiters_id: Swiggy
+
+  - name: Zomato
+    careers_url: https://careers.smartrecruiters.com/Zomato
+    smartrecruiters_id: Zomato
+
+  - name: Dream11
+    careers_url: https://careers.smartrecruiters.com/Dream11
+    smartrecruiters_id: Dream11
+
+  - name: ShareChat
+    careers_url: https://careers.smartrecruiters.com/ShareChat
+    smartrecruiters_id: ShareChat
+
+  - name: OYO
+    careers_url: https://careers.smartrecruiters.com/OYO
+    smartrecruiters_id: OYO
+
+  - name: Nykaa
+    careers_url: https://careers.smartrecruiters.com/NykaaFashion
+    smartrecruiters_id: NykaaFashion
+
+  - name: Delhivery
+    careers_url: https://careers.smartrecruiters.com/Delhivery
+    smartrecruiters_id: Delhivery
+
+  - name: Urban Company
+    careers_url: https://careers.smartrecruiters.com/UrbanCompany
+    smartrecruiters_id: UrbanCompany
+
+  - name: Cars24
+    careers_url: https://careers.smartrecruiters.com/Cars24Services
+    smartrecruiters_id: Cars24Services
+
+  - name: BlackBuck
+    careers_url: https://careers.smartrecruiters.com/Blackbuck
+    smartrecruiters_id: Blackbuck
+
+  - name: PharmEasy
+    careers_url: https://careers.smartrecruiters.com/PharmEasy
+    smartrecruiters_id: PharmEasy
+
+  - name: Shiprocket
+    careers_url: https://careers.smartrecruiters.com/Shiprocket
+    smartrecruiters_id: Shiprocket
+
+  - name: Pristyn Care
+    careers_url: https://careers.smartrecruiters.com/PristynCare
+    smartrecruiters_id: PristynCare
+
+  - name: Ola Electric
+    careers_url: https://careers.smartrecruiters.com/OlaElectric
+    smartrecruiters_id: OlaElectric
+
+  # ── Your ecosystem (relevant to your skills/stack) ───────────────────────
+  - name: Clear
+    careers_url: https://jobs.lever.co/Clear
+    lever_id: clear
+
+  - name: Flipkart
+    careers_url: https://www.flipkartcareers.com
+    lever_id: flipkart
+
+# Global scan settings
+scan:
+  concurrency: 10
+  timeout_ms: 30000
+  max_jobs_per_company: 50

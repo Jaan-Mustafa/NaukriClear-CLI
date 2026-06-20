@@ -1,0 +1,56 @@
+# NaukriClear CLI — Candidate Profile
+# Copy this file to config/profile.yml and fill in your details.
+
+candidate:
+  name: "Ravi Kumar"
+  email: "ravi@example.com"
+  phone: "+91-9876543210"
+  location: "Bengaluru"
+  linkedin: "linkedin.com/in/ravikumar"
+  github: "github.com/ravikumar"
+
+target_roles:
+  primary:
+    - "Backend Engineer"
+    - "Software Development Engineer"
+    - "SDE-1"
+    - "SDE-2"
+  cities:
+    - Bengaluru
+    - Hyderabad
+    - Mumbai
+    - Pune
+    - Remote
+  # Roles to skip even if title matches
+  exclude_keywords:
+    - "intern"
+    - "frontend"
+    - "iOS"
+    - "Android"
+    - "QA"
+
+compensation:
+  target_ctc_lpa: 20       # Target total CTC in Lakhs Per Annum
+  minimum_ctc_lpa: 15      # Walk-away number
+  currency: "INR"
+  notice_period_days: 30
+  work_mode: "hybrid"      # remote | hybrid | onsite
+
+experience:
+  years: 2
+  current_role: "Software Engineer"
+  current_company: "Startup"
+  skills:
+    - Java
+    - Spring Boot
+    - Python
+    - PostgreSQL
+    - Redis
+    - AWS
+    - Docker
+
+integrations:
+  naukriClear:
+    apiKey: "nc_your_token_here"
+    syncEnabled: true
+    autoSync: true          # push to NaukriClear after every scan

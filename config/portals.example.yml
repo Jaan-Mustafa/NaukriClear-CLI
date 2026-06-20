@@ -1,0 +1,72 @@
+# NaukriClear CLI — Portals Configuration
+# Copy this file to config/portals.yml
+# Add companies you want to track. The scanner auto-detects the ATS provider.
+
+companies:
+  # ── Unicorns & large startups ────────────────────────────────────────────
+  - name: Razorpay
+    careers_url: https://razorpay.com/jobs/
+    greenhouse_id: razorpay
+
+  - name: Zepto
+    careers_url: https://www.zeptonow.com/careers
+    greenhouse_id: zepto
+
+  - name: CRED
+    careers_url: https://careers.cred.club
+    ashby_id: cred
+
+  - name: Meesho
+    careers_url: https://meesho.io/jobs
+    greenhouse_id: meesho
+
+  - name: PhonePe
+    careers_url: https://phonepe.com/en-in/careers.html
+    lever_id: phonepe
+
+  - name: Groww
+    careers_url: https://groww.in/open-positions
+    greenhouse_id: groww
+
+  - name: BrowserStack
+    careers_url: https://www.browserstack.com/careers
+    greenhouse_id: browserstack
+
+  - name: Postman
+    careers_url: https://www.postman.com/company/careers/
+    greenhouse_id: postman
+
+  - name: Freshworks
+    careers_url: https://careers.freshworks.com
+    greenhouse_id: freshworks
+
+  - name: Flipkart
+    careers_url: https://www.flipkartcareers.com
+    lever_id: flipkart
+
+  # ── YC-backed India startups ─────────────────────────────────────────────
+  - name: Clear
+    careers_url: https://jobs.lever.co/Clear
+    lever_id: clear
+
+  - name: Khatabook
+    careers_url: https://khatabook.com/careers
+    greenhouse_id: khatabook
+
+  - name: Blinkit
+    careers_url: https://blinkit.com/careers
+    greenhouse_id: blinkit
+
+  - name: Setu
+    careers_url: https://setu.co/careers
+    ashby_id: setu
+
+  - name: Decentro
+    careers_url: https://decentro.tech/careers
+    ashby_id: decentro
+
+# Global scan settings
+scan:
+  concurrency: 10           # parallel requests
+  timeout_ms: 30000
+  max_jobs_per_company: 50

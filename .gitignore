@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Personal profile — contains API key, email, phone
+config/profile.yml
+
+# Personal CV — private info
+cv.md
+
+# Personal job pipeline and history
+data/pipeline.md
+data/scan-history.tsv
+data/applications.md
+data/
+
+# Sync cursor (obsolete, removed)
+.naukriclear-cursor
+
+# OS / editor
+.DS_Store
+*.swp
